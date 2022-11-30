@@ -3,19 +3,39 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
+    <ion-title>Generar Asignatura</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list>
+    <ion-item>
+      <ion-select
+        placeholder="Elige un asignatura"
+        (ionChange)="handleChange($event)"
+      
+      >
+        <ion-select-option value="CSY4111">Calidad de software</ion-select-option>
+        <ion-select-option value="PGY4121">Aplicaciones moviles</ion-select-option>
+        <ion-select-option value="ASY4131">Arquitectura</ion-select-option>
+        <ion-select-option value="MAT4140">Estadistica Descriptiva</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  
+  <div class="ion-padding">
+    <ion-button (click)="crearQr()" expand="block" >
+      Inicar Clase
+    </ion-button>
+
+
+    <ion-card *ngIf="createCode">
+      <ngx-qrcode [value]="createCode"></ngx-qrcode>
+       <ion-card-content>
+       Sigla Asignatura : {{createCode}}
+       </ion-card-content>
+    </ion-card>
+
   </div>
 </ion-content>

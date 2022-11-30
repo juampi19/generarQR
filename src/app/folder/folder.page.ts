@@ -7,12 +7,25 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./folder.page.scss'],
 })
 export class FolderPage implements OnInit {
-  public folder!: string;
+  logs: string = '';
+  createCode: any;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor() { }
 
   ngOnInit() {
-    this.folder = this.activatedRoute.snapshot.paramMap.get('id') as string;
+  }
+
+  
+
+  
+
+  handleChange(e: any) {
+    this.logs = e.detail.value;
+    
+  }
+
+  crearQr(){
+    this.createCode = this.logs;
   }
 
 }
